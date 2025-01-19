@@ -1,7 +1,7 @@
 import { Response, Request } from "express"
 import { OpenAI } from "openai"
 
-import AWS  from "aws-sdk"
+import AWS from "aws-sdk"
 
 import Redis from "ioredis";
 import crypto from "crypto";

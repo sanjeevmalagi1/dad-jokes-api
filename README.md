@@ -1,69 +1,70 @@
-<!--
-title: 'AWS Simple HTTP Endpoint example in NodeJS'
-description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.'
-layout: Doc
-framework: v4
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, Inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# Dad Jokes API
 
-# Serverless Framework Node HTTP API on AWS
+Dad Jokes API is a Serverless application designed to provide funny and witty dad jokes. It uses AWS Lambda, Node.js, and OpenAI for joke generation and Redis for caching. The application is deployed using the Serverless Framework.
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+---
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+## Features
+- **Dad Joke Generator**: Dynamically generates dad jokes using OpenAI API.
+- **Caching**: Redis integration for optimized response times.
+- **REST API**: Fully functional REST API with Serverless HTTP integration.
+- **Offline Support**: Run the API locally using `serverless-offline`.
 
-## Usage
+---
 
-### Deployment
+## Prerequisites
+To run or deploy this project, ensure the following tools are installed:
+- **Node.js** (v20.x recommended)
+- **Serverless Framework** (v3.x)
+- **AWS CLI** (configured with necessary permissions)
+- **Redis Server** (for caching)
 
-In order to deploy the example, you need to run the following command:
+---
 
-```
-serverless deploy
-```
+## Environment Variables
+The project uses the following environment variables. Ensure they are properly set in your environment:
 
-After running deploy, you should see output similar to:
+| Variable Name    | Description                          |
+|------------------|--------------------------------------|
+| `OPEN_AI_API_KEY`| API key for OpenAI                   |
+| `REDIS_HOST`     | Redis server hostname or IP          |
+| `REDIS_PORT`     | Redis server port                    |
+| `REDIS_PASSWORD` | Redis server password (if any)       |
 
-```
-Deploying "serverless-http-api" to stage "dev" (us-east-1)
+---
 
-✔ Service deployed to stack serverless-http-api-dev (91s)
+# Installation
 
-endpoint: GET - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  hello: serverless-http-api-dev-hello (1.6 kB)
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd dad-jokes-api
+   ```
 
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [HTTP API (API Gateway V2) event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api).
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-### Invocation
+# Build and Deploy
 
-After successful deployment, you can call the created application via HTTP:
-
-```
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
-
-Which should result in response similar to:
-
-```json
-{ "message": "Go Serverless v4! Your function executed successfully!" }
-```
-
-### Local development
-
-The easiest way to develop and test your function is to use the `dev` command:
-
-```
-serverless dev
+## Build the Project
+Compile the TypeScript code into JavaScript:
+```bash
+npm run build
 ```
 
-This will start a local emulator of AWS Lambda and tunnel your requests to and from AWS Lambda, allowing you to interact with your function as if it were running in the cloud.
+## Deploy to AWS
+Deploy the application to AWS using the Serverless Framework:
+```bash
+npm run deploy
+```
 
-Now you can invoke the function as before, but this time the function will be executed locally. Now you can develop your function locally, invoke it, and see the results immediately without having to re-deploy.
+# Contribution
+Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-When you are done developing, don't forget to run `serverless deploy` to deploy the function to the cloud.
+# License
+This project is licensed under the MIT License.
+
+# Contact
+For inquiries or issues, please contact the author of the project.
